@@ -28,7 +28,7 @@ final class RxGithubSearchMVVMViewModel: RxGithubSearchMVVMViewModelInput, RxGit
 
   /*inputについての記述*/
   //入力側の定型文的な書き方
-  private let _searchText = PublishRelay<String>()
+  private let _searchText = PublishRelay<String>() // 初期値がなく、.nextのみを流す.
   lazy var searchTextObserver: AnyObserver<String> = .init(eventHandler: { (event) in
     guard let e = event.element else { return }
     self._searchText.accept(e)

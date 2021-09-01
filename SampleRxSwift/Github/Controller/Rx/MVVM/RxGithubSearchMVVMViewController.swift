@@ -51,6 +51,7 @@ final class RxGithubSearchMVVMViewController: UIViewController {
     //初回読み込み時または変化があれば
     //sortTypeSegmentedControlのindexをストリームに流す
     let sortTypeObservable = Observable.merge(
+        // justで初回分読み込み
       Observable.just(sortTypeSegmentedControl.selectedSegmentIndex),
       sortTypeSegmentedControl.rx.controlEvent(.valueChanged).map { self.sortTypeSegmentedControl.selectedSegmentIndex }
     ).map { $0 == 0 }
